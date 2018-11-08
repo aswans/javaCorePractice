@@ -4,7 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 /**
  * java观察者模式
- * @author 张三杰 add 2015-6-29
+ * @author zsj add 2015-6-29
  *
  */
 public class ObserverMode {

@@ -2,10 +2,10 @@ package com.aswans.designmode.staticProxy;
 
 public class ProxyTest {
 
-	/**@功能
-	 * @参数 @param args
-	 * @作者 zsj add 2017-7-7 下午5:31:24
-	 * @返回值类型 void
+	/**
+	 * @desc 测试主类
+	 * @author zsj add 2018年11月8日 下午1:05:34
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
