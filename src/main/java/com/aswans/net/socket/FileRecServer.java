@@ -23,7 +23,7 @@ public class FileRecServer {
      //接收文件，并保存  
      InputStream in = fileLoaderSocket.getInputStream();  
      //实例化对象fileSave
-     OutputStream fileSave = new FileOutputStream("D:\\野生动物.wmv");  
+     OutputStream fileSave = new FileOutputStream("/opt/野生动物.wmv"); 
      //建立数组buf
      byte[] buf = new byte[1024];  
      int len = 0;  

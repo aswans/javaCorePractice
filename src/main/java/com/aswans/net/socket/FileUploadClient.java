@@ -14,12 +14,12 @@ public class FileUploadClient {
 	public static void main(String[] args) throws UnknownHostException,
 			IOException {
 		// 建立Socket服务
-		Socket fileLoaderSocket = new Socket("localhost", 10005);
+		Socket fileLoaderSocket = new Socket("192.168.20.199", 10005);
 		// 从客户端本地读取文件,并写入socket的输出流中
 		OutputStream out = fileLoaderSocket.getOutputStream();
 		// 实例化对象fileReader
 		File file = new File(
-				"C:\\Users\\Public\\Videos\\Sample Videos\\Wildlife.wmv");
+				"D:\\1.txt");
 		InputStream fileRead = new FileInputStream(file);
 		// 建立数组
 		byte[] buf = new byte[1024];
