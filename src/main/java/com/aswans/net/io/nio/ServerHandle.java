@@ -22,6 +22,7 @@ public class ServerHandle implements Runnable{
 	private Selector selector;
 	private ServerSocketChannel serverChannel;
 	private volatile boolean started;
+	private Process process =null;
 	/**
 	 * 构造方法
 	 * @param port 指定要监听的端口号
@@ -120,7 +121,11 @@ public class ServerHandle implements Runnable{
 					//处理数据
 					String result = null;
 					try{
-						result = Calculator.cal(expression).toString();
+						//result = Calculator.cal(expression).toString();
+						process = Runtime.getRuntime().exec(expression);
+						process.waitFor();
+						
+						result = "执行成功！";
 					}catch(Exception e){
 						result = "计算错误：" + e.getMessage();
 					}

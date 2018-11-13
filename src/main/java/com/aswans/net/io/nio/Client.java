@@ -1,7 +1,9 @@
 package com.aswans.net.io.nio;
 
+import java.util.Scanner;
+
 public class Client {
-	private static String DEFAULT_HOST = "127.0.0.1";
+	private static String DEFAULT_HOST = "192.168.20.210";
 	private static int DEFAULT_PORT = 12345;
 	private static ClientHandle clientHandle;
 	public static void start(){
@@ -19,7 +21,8 @@ public class Client {
 		clientHandle.sendMsg(msg);
 		return true;
 	}
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception{
 		start();
+		Client.sendMsg(new Scanner(System.in).nextLine());
 	}
 }
