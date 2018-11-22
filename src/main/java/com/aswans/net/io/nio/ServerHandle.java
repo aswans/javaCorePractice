@@ -133,7 +133,9 @@ public class ServerHandle implements Runnable{
 					doWrite(sc,result);
 				}
 				//没有读取到字节 忽略
-//				else if(readBytes==0);
+				else if(readBytes==0){
+					;
+				}
 				//链路已经关闭，释放资源
 				else if(readBytes<0){
 					key.cancel();
