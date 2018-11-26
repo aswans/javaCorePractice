@@ -16,7 +16,12 @@ public class MyCipher {
 		//enCipherClass(String.join(File.separator, srcFileElement));
 		enCipherClass(srcFilePath);
 	}
- 
+    /**
+     * @desc 异或加密 
+     * @author zsj add 2018年11月24日 下午6:55:24
+     * @param path
+     * @return
+     */
 	public static String enCipherClass(String path) {
 		File classFile = new File(path);
 		if (!classFile.exists()) {
@@ -45,7 +50,12 @@ public class MyCipher {
 		}
 		return cipheredClass;
 	}
- 
+    /**
+     * @desc 异或解密 
+     * @author zsj add 2018年11月24日 下午6:56:03
+     * @param path
+     * @return
+     */
 	public static byte[] deCihperClass(String path) {
 		File file = new File(path);
 		if (!file.exists()) {

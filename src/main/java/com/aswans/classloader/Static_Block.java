@@ -2,7 +2,7 @@ package com.aswans.classloader;
 
 public class Static_Block {
 	private static String name = null;
-	private static int age;
+	private static int age=50;
 	static {
 		System.out.println(age);
 		name = "zhangsj";
