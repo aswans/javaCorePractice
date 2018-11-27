@@ -11,8 +11,7 @@ public class ClassLoaderTest {
 		 * 导致同名类（类的全路径）可以多次加载
 		 */
 		ClassLoader myclassLoader = new ClassLoader() {
-			public Class
-			<?> loadClass(String name) throws  ClassNotFoundException{
+			public Class <?> loadClass(String name) throws  ClassNotFoundException{
 				try{
 					String fileName = name.substring(name.lastIndexOf(".")+1)+".class";
 					InputStream is = getClass().getResourceAsStream(fileName);
@@ -28,6 +27,7 @@ public class ClassLoaderTest {
 				}
 			}
 		};
+		
 		Class classz = myclassLoader.loadClass("com.aswans.classloader.ClassLoaderTest");
 		Object obj = classz.newInstance();
 		System.out.println(obj.getClass().getClassLoader());
