@@ -58,8 +58,8 @@ public class HotSwapURLClassLoader extends URLClassLoader {
 			return (clazz);
 		}
 
-		// 如果类的包名为"java."开始，则有系统默认加载器AppClassLoader加载
-		if (name.startsWith("java.")) {
+		// 如果类的包名为"java."开始，则有系统默认加载器AppClassLoader加载|| name.startsWith("sun.")
+		if (name.startsWith("java.") || name.startsWith("sun.")) {
 			try {
 				// 得到系统默认的加载cl，即AppClassLoader
 				ClassLoader system = ClassLoader.getSystemClassLoader();
@@ -76,9 +76,9 @@ public class HotSwapURLClassLoader extends URLClassLoader {
 
 		return customLoad(name, this);
 	}
-
-	public Class load(String name) throws Exception {
-		return loadClass(name);
+	@Override
+	public Class<?> loadClass(String name) throws ClassNotFoundException {
+		return loadClass(name, false);
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class HotSwapURLClassLoader extends URLClassLoader {
 
 	public Class customLoad(String name, boolean resolve, ClassLoader cl) throws ClassNotFoundException {
 		// findClass()调用的是URLClassLoader里面重载了ClassLoader的findClass()方法
-		Class clazz = ((HotSwapURLClassLoader) cl).findClass(name);
+		Class<?> clazz = ((HotSwapURLClassLoader) cl).findClass(name);
 		if (resolve)
 			((HotSwapURLClassLoader) cl).resolveClass(clazz);
 		// 缓存加载class文件的最后修改时间
@@ -104,15 +104,7 @@ public class HotSwapURLClassLoader extends URLClassLoader {
 		return clazz;
 	}
 
-	public Class<?> loadClass(String name) throws ClassNotFoundException {
-		return loadClass(name, false);
-	}
 
-	@Override
-	protected Class<?> findClass(String name) throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return super.findClass(name);
-	}
 
 	/**
 	 * @param name

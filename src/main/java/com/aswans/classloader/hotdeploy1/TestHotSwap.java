@@ -21,6 +21,8 @@ class MonitorHotSwap implements Runnable {
 		try {
 			while (true) {
 				initLoad();
+				// 如果Hot类被修改了，那么会重新加载，hotClass也会返回新的
+				hotClazz = hotSwapCL.loadClass(className);
 				//Object hot = hotClazz.newInstance();
 				Object hot = hotClazz.getConstructor(new Class[]{}).newInstance(new Object[]{});
 				Method m = hotClazz.getMethod("hot");
@@ -29,7 +31,7 @@ class MonitorHotSwap implements Runnable {
 				Object obj = getAa.invoke(hot, null); // 
 				System.out.println(obj.toString());
 				// 每隔10秒重新加载一次
-				Thread.sleep(5000);
+				Thread.sleep(2000);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,7 +43,5 @@ class MonitorHotSwap implements Runnable {
 	 */
 	void initLoad() throws Exception {
 		hotSwapCL = HotSwapURLClassLoader.getClassLoader();
-		// 如果Hot类被修改了，那么会重新加载，hotClass也会返回新的
-		hotClazz = hotSwapCL.loadClass(className);
 	}
 }
