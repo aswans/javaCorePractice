@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans>
+    <bean id="javaBean" class="com.aswans.reflect.demo1.JavaBean">
+       <property name="userName">
+           <value>阿蜜果</value>
+       </property>
+       <property name="password">
+           <value>12345678</value>
+       </property>
+    </bean>
+</beans>
