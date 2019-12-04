@@ -1,5 +1,8 @@
 package com.aswans.bean;
 
+import lombok.Data;
+
+@Data
 public class BaiduCoords {
     private double x;
     private double y;
